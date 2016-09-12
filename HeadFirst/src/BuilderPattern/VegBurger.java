@@ -1,0 +1,16 @@
+package BuilderPattern;
+
+/**
+ * Created by lwy on 2016/4/13.
+ */
+public class VegBurger extends Burger {
+    @Override
+    public String name() {
+        return "Veg Burger";
+    }
+
+    @Override
+    public float price() {
+        return 25.0f;
+    }
+}
