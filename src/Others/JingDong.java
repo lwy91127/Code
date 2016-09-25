@@ -3,13 +3,12 @@ package Others;
 import Utils.MyUtils;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Created by lwy on 2016/9/5.
  */
 public class JingDong {
-    static class Things{
+    static class Things {
         private String name;
         private int num;
 
@@ -29,7 +28,7 @@ public class JingDong {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        while(sc.hasNext()) {
+        while (sc.hasNext()) {
             int n = sc.nextInt();
             int m = sc.nextInt();
             int[] prices = new int[n];
@@ -48,19 +47,19 @@ public class JingDong {
                     things.put(key, newNum);
                 }
             }
-            List<Things> thingses= new ArrayList<>();
-            for(Map.Entry entry:things.entrySet()){
+            List<Things> thingses = new ArrayList<>();
+            for (Map.Entry entry : things.entrySet()) {
                 thingses.add(new Things(entry.getKey().toString(), Integer.valueOf(entry.getValue().toString())));
             }
             Collections.sort(thingses, (o1, o2) -> o2.num - o1.num);
             int min = 0;
             int max = 0;
-            for(int i = 0;i<thingses.size();i++){
+            for (int i = 0; i < thingses.size(); i++) {
                 int num = thingses.get(i).num;
                 int price = prices[i];
-                int maxprice = prices[n-i-1];
-                min += num*price;
-                max += num*maxprice;
+                int maxprice = prices[n - i - 1];
+                min += num * price;
+                max += num * maxprice;
             }
             System.out.println(min + " " + max);
         }

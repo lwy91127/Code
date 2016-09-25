@@ -1,7 +1,5 @@
 package HuaWei;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -10,7 +8,7 @@ import java.util.Scanner;
 public class MaxGrade {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        while(scanner.hasNext()) {
+        while (scanner.hasNext()) {
             int n = scanner.nextInt();
             int m = scanner.nextInt();
             int[] grades = new int[n + 1];
@@ -37,15 +35,15 @@ public class MaxGrade {
     }
 
     private static int getMaxBetween(int[] grades, int start, int end) {
-        if(start > 0 && end < grades.length) {
-            if(start > end){
+        if (start > 0 && end < grades.length) {
+            if (start > end) {
                 start = start ^ end;
                 end = start ^ end;
                 start = start ^ end;
             }
             int max = Integer.MIN_VALUE;
             for (int i = start; i <= end; i++) {
-                if(grades[i] > max)
+                if (grades[i] > max)
                     max = grades[i];
             }
             return max;

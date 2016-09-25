@@ -5,7 +5,7 @@ package PrototypePattern;
  */
 public class Square extends Shape {
 
-    public Square(){
+    public Square() {
         type = "Square";
     }
 

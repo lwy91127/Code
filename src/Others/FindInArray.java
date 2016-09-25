@@ -9,12 +9,11 @@ public class FindInArray {
         int c = array.length - 1;
         int i = 0;
         while (c >= 0 && i <= r - 1) {
-            if (array[c][i] == target){
+            if (array[c][i] == target) {
                 return true;
-            }
-            else if (array[c][i] > target) {
+            } else if (array[c][i] > target) {
                 --c;
-            } else if (array[c][i] < target){
+            } else if (array[c][i] < target) {
                 ++i;
             }
         }
@@ -22,7 +21,7 @@ public class FindInArray {
     }
 
     public static void main(String[] args) {
-        int[][] array = {{1,3,6,7},{2,4,8,9}};
-        System.out.println(Find(array,5));
+        int[][] array = {{1, 3, 6, 7}, {2, 4, 8, 9}};
+        System.out.println(Find(array, 5));
     }
 }

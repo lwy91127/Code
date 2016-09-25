@@ -1,7 +1,6 @@
 package HuaWei;
 
 import java.util.Scanner;
-import java.util.jar.Pack200;
 
 /**
  * Created by lwy on 2016/8/13.
@@ -12,9 +11,9 @@ public class GetCharNumbers {
         String oriStr = scanner.nextLine();
         String oriChar = scanner.nextLine();
         int count = 0;
-        for(char c:oriStr.toCharArray()){
-            if(oriChar.toLowerCase().charAt(0) == c || oriChar.toUpperCase().charAt(0) == c)
-                count ++;
+        for (char c : oriStr.toCharArray()) {
+            if (oriChar.toLowerCase().charAt(0) == c || oriChar.toUpperCase().charAt(0) == c)
+                count++;
         }
         System.out.println(count);
     }

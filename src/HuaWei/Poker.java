@@ -8,27 +8,26 @@ import java.util.Scanner;
 public class Poker {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        while(scanner.hasNext()){
+        while (scanner.hasNext()) {
             String line = scanner.nextLine();
             String first = line.split("-")[0];
             String second = line.split("-")[1];
-            if(first.split(" ").length != second.split(" ").length) {
+            if (first.split(" ").length != second.split(" ").length) {
                 if (isZhadan(first) || isTwoJoker(first) || isTwoJoker(second) || isZhadan(second)) {
-                    if(isTwoJoker(first))
+                    if (isTwoJoker(first))
                         System.out.println(first);
-                    else if(isTwoJoker(second))
+                    else if (isTwoJoker(second))
                         System.out.println(second);
-                    else if(isZhadan(first))
+                    else if (isZhadan(first))
                         System.out.println(first);
                     else
                         System.out.println(second);
 
-                }
-                else{
+                } else {
                     System.out.println("ERROR");
                 }
-            }else{
-                if(count(first.split(" ")[0]) > count(second.split(" ")[0]))
+            } else {
+                if (count(first.split(" ")[0]) > count(second.split(" ")[0]))
                     System.out.println(first);
                 else
                     System.out.println(second);
@@ -40,24 +39,24 @@ public class Poker {
         return "345678910JQKA2jokerJOKER".indexOf(str);
     }
 
-    private static boolean isZhadan(String str){
+    private static boolean isZhadan(String str) {
         String[] strings = str.split(" ");
-        if(strings.length != 4)
+        if (strings.length != 4)
             return false;
         String c = strings[0];
-        for(String x:strings){
-            if(!x.equals(c))
+        for (String x : strings) {
+            if (!x.equals(c))
                 return false;
         }
         return true;
     }
 
-    private static boolean isTwoJoker(String str){
+    private static boolean isTwoJoker(String str) {
         String[] strings = str.split(" ");
-        if(strings.length != 2)
+        if (strings.length != 2)
             return false;
-        for(String s:strings){
-            if(!s.equalsIgnoreCase("joker"))
+        for (String s : strings) {
+            if (!s.equalsIgnoreCase("joker"))
                 return false;
         }
         return true;

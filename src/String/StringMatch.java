@@ -1,21 +1,24 @@
 package String;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * Created by lwy on 2016/9/2.
  */
 public class StringMatch {
-    private static String[] findCoder(String[] A,int n){
+    private static String[] findCoder(String[] A, int n) {
         List<Codercls> list = new ArrayList<>();
         int i = 0;
-        for(String str:A){
-            list.add(new Codercls(str,i++,getCoderNum(str)));
+        for (String str : A) {
+            list.add(new Codercls(str, i++, getCoderNum(str)));
         }
         Collections.sort(list, new Comparator<Codercls>() {
             @Override
             public int compare(Codercls o1, Codercls o2) {
-                if(o1.count != o2.count)
+                if (o1.count != o2.count)
                     return o2.count - o1.count;
                 else
                     return o1.index - o2.index;
@@ -23,7 +26,7 @@ public class StringMatch {
         });
         System.out.println(list);
         String[] result = new String[n];
-        for(int j = 0;j<n;j++){
+        for (int j = 0; j < n; j++) {
             result[j] = list.get(j).str;
         }
         return result;
@@ -32,7 +35,7 @@ public class StringMatch {
     private static int getCoderNum(String str) {
         int count = 0;
         String temp = str.toUpperCase();
-        while(temp.contains("CODER")){
+        while (temp.contains("CODER")) {
             count++;
             temp = temp.substring(temp.indexOf("CODER") + 5);
         }
@@ -40,16 +43,16 @@ public class StringMatch {
     }
 
     public static void main(String[] args) {
-        String[] A = {"i am a coder","Coder Coder","Code"};
-        System.out.println(findCoder(A,3));
+        String[] A = {"i am a coder", "Coder Coder", "Code"};
+        System.out.println(findCoder(A, 3));
     }
 
-    static class Codercls{
+    static class Codercls {
         private String str;
         private int index;
         private int count;
 
-        public Codercls(String str,int index, int count) {
+        public Codercls(String str, int index, int count) {
             this.str = str;
             this.index = index;
             this.count = count;

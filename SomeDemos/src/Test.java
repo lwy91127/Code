@@ -2,7 +2,7 @@
  * Created by lwy on 2016/4/25.
  */
 public class Test {
-    public static synchronized void method1(){
+    public static synchronized void method1() {
         System.out.println("in method1");
         try {
             Thread.sleep(3000);
@@ -12,7 +12,7 @@ public class Test {
         System.out.println("method1");
     }
 
-    public static  void method2(){
+    public static void method2() {
         System.out.println("method2");
     }
 

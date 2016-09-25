@@ -1,5 +1,3 @@
-import javax.management.StandardEmitterMBean;
-import java.sql.PreparedStatement;
 import java.util.concurrent.Semaphore;
 
 /**
@@ -20,18 +18,19 @@ public class SerialRunThread {
         Semaphore sempB = new Semaphore(0);
         Semaphore sempC = new Semaphore(0);
 
-        PrintThread thread1 = new PrintThread(1,sempA,sempB,"A");
-        PrintThread thread2 = new PrintThread(1,sempB,sempC,"B");
-        PrintThread thread3 = new PrintThread(1,sempC,sempA,"C");
+        PrintThread thread1 = new PrintThread(1, sempA, sempB, "A");
+        PrintThread thread2 = new PrintThread(1, sempB, sempC, "B");
+        PrintThread thread3 = new PrintThread(1, sempC, sempA, "C");
 
         thread1.start();
         thread2.start();
         thread3.start();
     }
 
-    static class MyThread extends Thread{
+    static class MyThread extends Thread {
         String str;
-        public MyThread(String str){
+
+        public MyThread(String str) {
             this.str = str;
         }
 
@@ -42,7 +41,7 @@ public class SerialRunThread {
         }
     }
 
-    static class PrintThread extends Thread{
+    static class PrintThread extends Thread {
         int N;
         Semaphore curSemp;
         Semaphore nextSemp;

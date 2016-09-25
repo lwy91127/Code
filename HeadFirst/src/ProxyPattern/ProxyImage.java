@@ -13,7 +13,7 @@ public class ProxyImage implements Image {
 
     @Override
     public void display() {
-        if(realImage == null){
+        if (realImage == null) {
             realImage = new RealImage(fileName);
         }
         realImage.display();

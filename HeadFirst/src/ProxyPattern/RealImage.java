@@ -3,7 +3,7 @@ package ProxyPattern;
 /**
  * Created by lwy on 2016/4/18.
  */
-public class RealImage implements Image{
+public class RealImage implements Image {
     private String fileName;
 
     public RealImage(String fileName) {

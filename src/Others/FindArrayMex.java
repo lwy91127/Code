@@ -28,21 +28,21 @@ public class FindArrayMex {
 //        return l + 1;
 //    }
 
-    public int findArrayMex(int[] a,int n){
-        Map<Integer,Integer> map = new HashMap<>();
-        for(int i = 0;i<n;i++){
-            map.put(a[i],1);
+    public int findArrayMex(int[] a, int n) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            map.put(a[i], 1);
         }
-        for(int j = 1;j<=n;j++){
-            if(!map.containsKey(j))
+        for (int j = 1; j <= n; j++) {
+            if (!map.containsKey(j))
                 return j;
         }
         return 0;
     }
 
     @Test
-    public void test(){
-        int[] a = {1,5,3,0,6,6,6};
-        System.out.println(findArrayMex(a,7));
+    public void test() {
+        int[] a = {1, 5, 3, 0, 6, 6, 6};
+        System.out.println(findArrayMex(a, 7));
     }
 }

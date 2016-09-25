@@ -1,7 +1,5 @@
 package DataBasePool;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.concurrent.CountDownLatch;
@@ -21,21 +19,22 @@ public class ConnectionPoolTest {
         int count = 20;
         AtomicInteger got = new AtomicInteger();
         AtomicInteger ungot = new AtomicInteger();
-        for(int i = 0; i < threadCount ;i++){
-            Thread thread = new Thread(new ConnectionRunner(count,got,ungot),"CoonectionRuunerThread");
+        for (int i = 0; i < threadCount; i++) {
+            Thread thread = new Thread(new ConnectionRunner(count, got, ungot), "CoonectionRuunerThread");
             thread.start();
         }
         start.countDown();
         end.await();
-        System.out.println("total invoke: "+ (threadCount*count));
-        System.out.println("got: "+ got);
-        System.out.println("ungot: "+ ungot);
+        System.out.println("total invoke: " + (threadCount * count));
+        System.out.println("got: " + got);
+        System.out.println("ungot: " + ungot);
     }
 
     static class ConnectionRunner implements Runnable {
         int count;
         AtomicInteger got;
         AtomicInteger ungot;
+
         public ConnectionRunner(int count, AtomicInteger got, AtomicInteger ungot) {
             this.count = count;
             this.got = got;
@@ -44,30 +43,30 @@ public class ConnectionPoolTest {
 
         @Override
         public void run() {
-            try{
+            try {
                 start.await();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            while(count > 0){
-                try{
+            while (count > 0) {
+                try {
                     Connection connection = pool.fetchConnection(1000);
-                    if(connection != null){
+                    if (connection != null) {
                         try {
                             connection.createStatement();
                             connection.commit();
                         } catch (SQLException e) {
                             e.printStackTrace();
-                        }finally {
+                        } finally {
                             pool.releaseConnection(connection);
                             got.incrementAndGet();
                         }
-                    }else{
+                    } else {
                         ungot.incrementAndGet();
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                }finally {
+                } finally {
                     count--;
                 }
             }

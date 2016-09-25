@@ -1,8 +1,8 @@
 package Others;
 
-import org.junit.Test;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by lwy on 2016/8/2.
@@ -75,8 +75,8 @@ public class NetCase {
 
     private static int getMinValue(List<Integer> sums) {
         int min = Integer.MAX_VALUE;
-        for(int n :sums){
-            if(n < min)
+        for (int n : sums) {
+            if (n < min)
                 min = n;
         }
         return min;

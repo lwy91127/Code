@@ -1,7 +1,5 @@
 package CompositePattern;
 
-import com.sun.org.apache.regexp.internal.RE;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,15 +19,15 @@ public class Employee {
         this.subordinates = new ArrayList<>();
     }
 
-    public void add(Employee e){
+    public void add(Employee e) {
         subordinates.add(e);
     }
 
-    public void remove(Employee e){
+    public void remove(Employee e) {
         subordinates.remove(e);
     }
 
-    public List<Employee> getSubordinates(){
+    public List<Employee> getSubordinates() {
         return subordinates;
     }
 

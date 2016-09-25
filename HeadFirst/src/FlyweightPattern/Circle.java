@@ -3,7 +3,7 @@ package FlyweightPattern;
 /**
  * Created by lwy on 2016/4/18.
  */
-public class Circle implements Shape{
+public class Circle implements Shape {
     private String color;
     private int x;
     private int y;

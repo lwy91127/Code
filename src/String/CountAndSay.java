@@ -3,33 +3,33 @@ package String;
 import org.junit.Test;
 
 /**
- NO.38
- The count-and-say sequence is the sequence of integers beginning as follows:
- 1, 11, 21, 1211, 111221, ...
-
- 1 is read off as "one 1" or 11.
- 11 is read off as "two 1s" or 21.
- 21 is read off as "one 2, then one 1" or 1211.
- Given an integer n, generate the nth sequence.
-
+ * NO.38
+ * The count-and-say sequence is the sequence of integers beginning as follows:
+ * 1, 11, 21, 1211, 111221, ...
+ * <p>
+ * 1 is read off as "one 1" or 11.
+ * 11 is read off as "two 1s" or 21.
+ * 21 is read off as "one 2, then one 1" or 1211.
+ * Given an integer n, generate the nth sequence.
+ * <p>
  * Created by lwy on 2016/6/15.
  */
 public class CountAndSay {
-    public String countAndSay(int n){
-        if(n <= 0) return "";
+    public String countAndSay(int n) {
+        if (n <= 0) return "";
         String init = "1";
-        int count ;
+        int count;
 
-        for(int i = 1;i<n;i++){
+        for (int i = 1; i < n; i++) {
             count = 1;
             StringBuilder sb = new StringBuilder();
-            for(int j = 1;j<init.length();j++){
+            for (int j = 1; j < init.length(); j++) {
 
-                if(init.charAt(j-1) == init.charAt(j)){
+                if (init.charAt(j - 1) == init.charAt(j)) {
                     count++;
-                }else{
+                } else {
                     sb.append(count);
-                    sb.append(init.charAt(j-1));
+                    sb.append(init.charAt(j - 1));
                     count = 1;
                 }
             }
@@ -41,7 +41,7 @@ public class CountAndSay {
     }
 
     @Test
-    public void test(){
+    public void test() {
         System.out.println(countAndSay(12));
     }
 }

@@ -7,17 +7,17 @@ import org.junit.Test;
  * Created by lwy on 2016/4/3.
  */
 public class FindKthNumbers {
-    public int[] findKthNumbers(int[] A, int n, int k){
-        if(k < 1 || k > n)
+    public int[] findKthNumbers(int[] A, int n, int k) {
+        if (k < 1 || k > n)
             return A;
         int[] heap = new int[k];
-        for(int i = 0;i < k;i++){
-            heapInsert(heap,A[i],i);
+        for (int i = 0; i < k; i++) {
+            heapInsert(heap, A[i], i);
         }
-        for(int j = k;j<A.length;j++){
-            if(A[j] < heap[0]){
+        for (int j = k; j < A.length; j++) {
+            if (A[j] < heap[0]) {
                 heap[0] = A[j];
-                heapify(heap,0,k);
+                heapify(heap, 0, k);
             }
         }
         return heap;
@@ -27,14 +27,14 @@ public class FindKthNumbers {
         int left = index * 2 - 1;
         int right = index * 2 + 1;
         int lagest = index;
-        while(left < heapsize){
-            if(heap[left] > heap[index]){
+        while (left < heapsize) {
+            if (heap[left] > heap[index]) {
                 lagest = left;
             }
-            if(right < heapsize && heap[right] > heap[index])
+            if (right < heapsize && heap[right] > heap[index])
                 lagest = right;
-            if(lagest != index)
-                swap(heap,index,lagest);
+            if (lagest != index)
+                swap(heap, index, lagest);
             else
                 break;
             index = lagest;
@@ -45,12 +45,12 @@ public class FindKthNumbers {
 
     private void heapInsert(int[] heap, int value, int index) {
         heap[index] = value;
-        int parent = (index - 1)/2;
-        while(index != 0){
-            if(heap[parent] < heap[index]){
-                swap(heap,parent,index);
+        int parent = (index - 1) / 2;
+        while (index != 0) {
+            if (heap[parent] < heap[index]) {
+                swap(heap, parent, index);
                 index = parent;
-            }else
+            } else
                 break;
         }
     }
@@ -62,9 +62,9 @@ public class FindKthNumbers {
     }
 
     @Test
-    public void test(){
-        int[] a = {1,2,4,3,5,6,9};
-        int[] res = findKthNumbers(a,7,4);
+    public void test() {
+        int[] a = {1, 2, 4, 3, 5, 6, 9};
+        int[] res = findKthNumbers(a, 7, 4);
         MyUtils.printVector(res);
     }
 }

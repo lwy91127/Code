@@ -5,7 +5,8 @@ package BridgePattern;
  */
 public abstract class Shape {
     protected DrawAPI drawAPI;
-    protected Shape(DrawAPI drawAPI){
+
+    protected Shape(DrawAPI drawAPI) {
         this.drawAPI = drawAPI;
     }
 
